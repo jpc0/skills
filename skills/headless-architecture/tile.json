@@ -1,0 +1,11 @@
+{
+  "name": "jpc0/headless-architecture",
+  "version": "0.1.0",
+  "private": false,
+  "summary": "Use this skill whenever the user discusses application architecture, clean architecture, separating business logic from UI, or cross-platform/WASM-based development. It enforces the 'Headless Core & Passive View' pattern, ensuring that the 'Core' (Business Logic) is platform-agnostic and the 'View' (UI) is a 'Humble Object' that only reflects state.",
+  "skills": {
+    "headless-architecture": {
+      "path": "SKILL.md"
+    }
+  }
+}

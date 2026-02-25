@@ -1,6 +1,6 @@
 ---
 name: headless-architecture
-description: Use this skill whenever the user discusses application architecture, clean architecture, separating business logic from UI, or cross-platform/WASM-based development. It enforces the 'Headless Core & Passive View' pattern, ensuring that the 'Core' (Business Logic) is platform-agnostic and the 'View' (UI) is a 'Humble Object' that only reflects state.
+description: Use this skill to refactor, design, or review application architecture. Trigger it when discussing clean architecture, separating business logic from UI, or cross-platform/WASM development. This skill enforces the 'Headless Core & Passive View' pattern, it proactively refactors logic out of the UI, creates platform-agnostic Core interfaces, and ensures the View is a 'Humble Object' that only reflects state.
 ---
 
 # Headless Core & Passive View Architecture
@@ -8,8 +8,8 @@ description: Use this skill whenever the user discusses application architecture
 This skill implements a strict separation between the **Application** (Business Logic, State, Rules) and the **Presentation** (UI, Inputs, Rendering).
 
 ## 1. Core Philosophy
-* **The "Core"**: This is the application. It holds the "Source of Truth," is platform-agnostic, and contains zero UI code.
-* **The "View"**: This is a dumb rendering layer ("Humble Object") that strictly reflects the state provided by the Core.
+* **The "Core"**: Holds the "Source of Truth," is platform-agnostic, and contains zero UI code.
+* **The "View"**: A "Humble Object" that strictly reflects the state provided by the Core.
 
 ## 2. The Layers
 
@@ -36,20 +36,20 @@ This skill implements a strict separation between the **Application** (Business 
     2.  **Capture**: Detect user intent and dispatch Commands to the Core.
 * **Validation**: UI-specific validation (like "field is required" or simple regex for instant feedback) is allowed for UX improvement, but all business-critical validation MUST live in the Core.
 
-## 3. Abstract Implementation Patterns
+## 3. Implementation Patterns
+Detailed code examples and pattern implementations are found in [references/patterns.md](references/patterns.md).
 
 ### Pattern 1: The Validator (Forms & Input)
-* **View**: Holds "Draft State" (raw strings/inputs).
 * **Core**: Exposes `validate(draft)` -> returns `Errors`.
-* **Flow**: View calls `validate()` on change -> Core returns status -> View updates UI.
+* **View**: Captures input, calls `validate()`, and displays errors from the Core state.
 
 ### Pattern 2: The Codec (Real-time Sync)
-* **Core**: Acts as a buffer for noisy packets, applies deltas, handles sync/interpolation.
-* **View**: Asks Core for "Current Frame" inside a render loop.
+* **Core**: Buffers raw data, applies deltas, and handles jitter/sync.
+* **View**: Reads "Current Frame" snapshot inside a render loop.
 
 ### Pattern 3: The Pointer (Heavy Assets)
-* **View (Control Plane)**: Browses lightweight Metadata/IDs.
-* **Core (Data Plane)**: Resolves ID to resource, handles streaming/decoding.
+* **Core**: Resolves reference IDs to actual resources or streams.
+* **View**: Browses metadata and IDs without direct access to binary data.
 
 ## 4. Developer Instructions
 When generating code or designing systems:
