@@ -1,0 +1,36 @@
+{
+  "context": "Evaluates whether the agent correctly sanitizes sensitive data in the Core and passes only read-only DTOs/ViewModels to the View, avoiding direct database exposure.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Monorepo structure",
+      "description": "Uses separate directories for /core (logic) and /ui (presentation)",
+      "max_score": 10
+    },
+    {
+      "name": "DTO for logs",
+      "description": "A dedicated Data Transfer Object or ViewModel (e.g. LogSnapshot) is created for passing log data to the View",
+      "max_score": 20
+    },
+    {
+      "name": "No direct DB exposure",
+      "description": "The UI layer does not have access to any database connection, raw queries, or session objects",
+      "max_score": 20
+    },
+    {
+      "name": "Read-only ViewModel",
+      "description": "The log data is passed to the UI as a read-only ViewModel or immutable structure",
+      "max_score": 20
+    },
+    {
+      "name": "Data sanitization in Core",
+      "description": "Sensitive information (like API keys) is sanitized or excluded in the Core before being sent to the ViewModel",
+      "max_score": 20
+    },
+    {
+      "name": "Humble View for logs",
+      "description": "The UI component only renders the data from the ViewModel and performs no data filtering or cleanup",
+      "max_score": 10
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "context": "Evaluates whether the agent creates a platform-agnostic chess engine logic with a clear FFI-compatible bridge for multi-platform use (WASM/Mobile).",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Monorepo structure",
+      "description": "Uses separate directories for /core (logic) and /ui (presentation)",
+      "max_score": 10
+    },
+    {
+      "name": "Platform-agnostic Core",
+      "description": "The chess engine code contains no UI framework imports or environment-specific globals (e.g. no React, no window)",
+      "max_score": 15
+    },
+    {
+      "name": "Explicit Bridge Interface",
+      "description": "Defines an explicit bridge, FFI layer, or contract for connecting Core to View",
+      "max_score": 15
+    },
+    {
+      "name": "Strongly typed commands",
+      "description": "User intent (making a move) is captured as a typed command (e.g. MakeMove { from: 'e2', to: 'e4' }) passed to the Core",
+      "max_score": 15
+    },
+    {
+      "name": "Read-only ViewModel",
+      "description": "The board state is passed to the UI via a read-only ViewModel/DTO (e.g. BoardState)",
+      "max_score": 15
+    },
+    {
+      "name": "Humble View",
+      "description": "The UI component only renders the board from the ViewModel and performs no game logic check (e.g. valid moves)",
+      "max_score": 15
+    },
+    {
+      "name": "Game logic in Core",
+      "description": "Game rules (move validation, checkmate detection) are implemented in the Core layer",
+      "max_score": 15
+    }
+  ]
+}

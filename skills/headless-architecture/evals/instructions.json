@@ -1,0 +1,94 @@
+{
+  "instructions" : [
+    {
+      "instruction": "Strict separation between Application (Core) and Presentation (View).",
+      "original_snippets": "implements a strict separation between the Application (Business Logic, State, Rules) and the Presentation (UI, Inputs, Rendering).",
+      "relevant_when": "When designing any new feature or application.",
+      "why_given": "Preference - fundamental design pattern."
+    },
+    {
+      "instruction": "The Core must be platform-agnostic and contain zero UI code.",
+      "original_snippets": "The 'Core': Holds the 'Source of Truth,' is platform-agnostic, and contains zero UI code.",
+      "relevant_when": "When writing code in the Core layer.",
+      "why_given": "Preference - ensures cross-platform capability."
+    },
+    {
+      "instruction": "The Core must compile without UI framework dependencies.",
+      "original_snippets": "Constraint: Must compile without any UI framework dependencies.",
+      "relevant_when": "When setting up build scripts or importing libraries in the Core layer.",
+      "why_given": "Preference - ensures pure logic isolation."
+    },
+    {
+      "instruction": "The View is a 'Humble Object' that only reflects state.",
+      "original_snippets": "The 'View': A 'Humble Object' that strictly reflects the state provided by the Core.",
+      "relevant_when": "When writing code in the View layer.",
+      "why_given": "Preference - simplifies UI testing and platform porting."
+    },
+    {
+      "instruction": "Core logic should use Actions -> State -> ViewModel flow.",
+      "original_snippets": "Pattern: Receives Actions/Commands -> Mutates State -> Emits Snapshots/ViewModels.",
+      "relevant_when": "When designing the State Machine or data flow in the Core.",
+      "why_given": "Preference - standardizes data flow."
+    },
+    {
+      "instruction": "Input must be strongly typed Commands.",
+      "original_snippets": "Input: Strongly typed Commands (e.g., SubmitForm { data }).",
+      "relevant_when": "When defining the Bridge/Interface for user inputs.",
+      "why_given": "Preference - improves type safety across the boundary."
+    },
+    {
+      "instruction": "Output must be read-only ViewModels.",
+      "original_snippets": "Output: Read-only ViewModels (e.g., DashboardState { graphs: [...] }).",
+      "relevant_when": "When defining the Bridge/Interface for data display.",
+      "why_given": "Preference - prevents the View from accidentally mutating Core state."
+    },
+    {
+      "instruction": "Never pass complex internal objects (like DB connections) to the View.",
+      "original_snippets": "Rule: Never pass complex internal objects (like DB connections) to the View. Pass simple Data Transfer Objects (DTOs).",
+      "relevant_when": "When passing data through the Bridge/Interface.",
+      "why_given": "Preference - security and abstraction boundary."
+    },
+    {
+      "instruction": "Business-critical validation MUST live in the Core.",
+      "original_snippets": "all business-critical validation MUST live in the Core.",
+      "relevant_when": "When implementing validation for user inputs.",
+      "why_given": "Preference - ensures consistency across platforms."
+    },
+    {
+      "instruction": "Default to a monorepo structure with specific directories.",
+      "original_snippets": "Default to a monorepo structure (e.g., /core for logic, /ui for presentation, and /shared or /bridge for interfaces).",
+      "relevant_when": "When starting a new project.",
+      "why_given": "Preference - organization standard."
+    },
+    {
+      "instruction": "Always start with the Core.",
+      "original_snippets": "Always define the Core structs, logic, and state first.",
+      "relevant_when": "When starting to build a new feature.",
+      "why_given": "Preference - logic-first development."
+    },
+    {
+      "instruction": "Explicitly define the FFI boundary or API contract.",
+      "original_snippets": "Explicitly define the FFI boundary, WASM bindings, or API contracts between Core and View.",
+      "relevant_when": "When connecting Core and View.",
+      "why_given": "New knowledge - technical necessity for cross-platform interop."
+    },
+    {
+      "instruction": "Build the View last.",
+      "original_snippets": "Write the Frontend code assuming the Core library already exists and works perfectly.",
+      "relevant_when": "When planning development order.",
+      "why_given": "Reminder - logic-first approach."
+    },
+    {
+      "instruction": "Refuse business logic in UI components.",
+      "original_snippets": "If the user asks to put business logic in a UI component... refuse and move it to the Core, exposing a property in the ViewModel instead.",
+      "relevant_when": "When the user requests to add logic to a UI component.",
+      "why_given": "Preference - boundary enforcement."
+    },
+    {
+      "instruction": "Core buffers raw data and applies deltas for real-time data.",
+      "original_snippets": "Implements 'Codec' logic for real-time data (buffering, jitter compensation) before exposing clean state to the View.",
+      "relevant_when": "When handling real-time data streams like stock prices or sensor data.",
+      "why_given": "Preference - handles concurrency and jitter in Core."
+    }
+  ]
+}

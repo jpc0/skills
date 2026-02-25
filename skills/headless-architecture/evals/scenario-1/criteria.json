@@ -1,0 +1,41 @@
+{
+  "context": "Evaluates whether the agent implements a 'Codec' pattern for real-time data handling in the Core layer, ensuring the View only reflects the final processed state.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Monorepo structure",
+      "description": "Uses separate directories for /core (logic) and /ui (presentation)",
+      "max_score": 10
+    },
+    {
+      "name": "State Machine in Core",
+      "description": "The Core receives raw price updates as actions/commands and mutates its internal state",
+      "max_score": 15
+    },
+    {
+      "name": "Buffer implementation in Core",
+      "description": "Core implements a sliding window or buffer to store the last 10 prices for averaging",
+      "max_score": 15
+    },
+    {
+      "name": "Averaging logic in Core",
+      "description": "The calculation for the smoothed average (arithmetic mean) is performed in the Core layer",
+      "max_score": 15
+    },
+    {
+      "name": "ViewModel output",
+      "description": "Core exposes a read-only ViewModel containing only the current smoothed_price",
+      "max_score": 15
+    },
+    {
+      "name": "Humble View",
+      "description": "The UI component only renders the value from the ViewModel and performs no math on the data",
+      "max_score": 15
+    },
+    {
+      "name": "No direct UI calculations",
+      "description": "The View layer does not contain any code for smoothing, averaging, or buffering the data",
+      "max_score": 15
+    }
+  ]
+}

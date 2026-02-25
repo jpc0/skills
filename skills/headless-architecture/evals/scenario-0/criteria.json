@@ -1,0 +1,46 @@
+{
+  "context": "Evaluates whether the agent correctly partitions a new feature into a platform-agnostic Core and a Passive View, using strongly typed commands and viewmodels.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Monorepo structure",
+      "description": "Uses separate directories for /core (logic) and /ui (presentation)",
+      "max_score": 10
+    },
+    {
+      "name": "Core isolation",
+      "description": "The /core files contain no UI framework imports (e.g. React, Flutter) or browser-specific globals",
+      "max_score": 10
+    },
+    {
+      "name": "Logic in Core",
+      "description": "Password strength validation logic (e.g. min length 8) is implemented in the /core layer",
+      "max_score": 15
+    },
+    {
+      "name": "Strongly typed commands",
+      "description": "User intent is captured as a command/action (e.g. RegisterAccount) passed to the Core",
+      "max_score": 15
+    },
+    {
+      "name": "ViewModel output",
+      "description": "Data to be displayed (like error lists) is passed to the View via a read-only ViewModel/DTO",
+      "max_score": 15
+    },
+    {
+      "name": "Passive View",
+      "description": "The UI component contains zero business logic; it only renders state from the ViewModel",
+      "max_score": 15
+    },
+    {
+      "name": "Action-State Flow",
+      "description": "Core implements a flow where Actions trigger state mutations which update the ViewModel",
+      "max_score": 10
+    },
+    {
+      "name": "Bridge Interface",
+      "description": "Defines an explicit bridge or contract between the Core and the View",
+      "max_score": 10
+    }
+  ]
+}

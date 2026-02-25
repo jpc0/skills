@@ -1,0 +1,1 @@
+Cross-platform core logic with explicit boundary

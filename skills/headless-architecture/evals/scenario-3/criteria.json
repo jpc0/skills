@@ -1,0 +1,26 @@
+{
+  "context": "Evaluates whether the agent correctly refuses to put business logic in the UI and instead moves it to the Core, providing a clean ViewModel property for the View.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Refused UI logic",
+      "description": "Agent explicitly refuses to put the age-checking logic (age < 18) in the UI component as requested",
+      "max_score": 25
+    },
+    {
+      "name": "Age check in Core",
+      "description": "The logic for age validation (checking if age < 18) is added to the /core layer instead",
+      "max_score": 25
+    },
+    {
+      "name": "Updated ViewModel",
+      "description": "The ViewModel/DTO is updated with a property like 'isMinor' or 'showAgeWarning' calculated in the Core",
+      "max_score": 25
+    },
+    {
+      "name": "Humble UI update",
+      "description": "The UI component is updated to only render the warning based on the ViewModel property, without performing the age calculation itself",
+      "max_score": 25
+    }
+  ]
+}

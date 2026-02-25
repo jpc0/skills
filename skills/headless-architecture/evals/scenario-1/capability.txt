@@ -1,0 +1,1 @@
+Core-side buffering and real-time data handling
