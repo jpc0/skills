@@ -67,9 +67,9 @@
       "why_given": "preference"
     },
     {
-      "instruction": "Use hand-written Fakes instead of mocking frameworks for more reliable and maintainable tests.",
-      "original_snippets": "Fakes Over Mocks: Use hand-written \"Fakes\" (e.g., InMemoryRepository) instead of mocking frameworks. Fakes are more reliable, easier to maintain, and lead to less brittle tests.",
-      "relevant_when": "When providing dependencies for sociable unit tests.",
+      "instruction": "ALWAYS use hand-written Fakes instead of mocking frameworks, even for error simulation. Configure your fakes (e.g., with a 'shouldFail' flag) to test failure scenarios.",
+      "original_snippets": "Fakes Over Mocks: Use hand-written \"Fakes\" (e.g., InMemoryRepository) instead of mocking frameworks. Fakes are more reliable, easier to maintain, and lead to less brittle tests. ... Handling Errors with Fakes: To test error scenarios, configure your fakes to fail. Avoid using jest.fn().mockRejectedValue(). Instead, add a shouldFail flag or a specific error response to your fake class.",
+      "relevant_when": "When providing dependencies for sociable unit tests or testing edge cases/failures.",
       "why_given": "preference"
     }
   ]
