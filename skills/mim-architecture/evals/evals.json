@@ -1,0 +1,26 @@
+{
+  "skill_name": "mim-architecture",
+  "evals": [
+    {
+      "id": 0,
+      "name": "design-module",
+      "prompt": "Design a 'Battery Alarm' module using MIM architecture. Focus on the split between Business-Module and Infrastructure-Module. Provide some example code for the BM's public API and the IM's implementation of an interface. Explain how this design adheres to the principle of High Cohesion.",
+      "expected_output": "A clear file structure with BM and IM folders. BM should contain a service and an interface. IM should contain an implementation of that interface. The explanation should reference bundling feature components together.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "refactor-to-mim",
+      "prompt": "Refactor this traditional horizontal architecture into a MIM module: `UserService` in `src/services/UserService.ts` depends on `UserRepository` in `src/repositories/UserRepository.ts` and `EmailService` in `src/services/EmailService.ts`. `UserService.register` saves a user and sends a welcome email. How should this look in a MIM-style vertical module?",
+      "expected_output": "A MIM-style module structure (e.g., `UserOnboarding/BM` and `UserOnboarding/IM`). `UserService` and interfaces for Repo/Email in BM, implementations in IM. Zero compile-time dependencies from BM to IM.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "sociable-testing",
+      "prompt": "Explain how to write a sociable unit test for a 'Firmware Dispatcher' module that needs to talk to an IoT gateway and a SQL database. Show an example of using a Fake instead of a Mock for the database. Why is this approach better for refactoring?",
+      "expected_output": "Explanation of testing the module as a unit via its public API. Example code showing a hand-written `FakeDatabase` (e.g., in-memory list). Explanation that it allows internal refactoring without breaking tests because it targets behavior, not internal classes.",
+      "files": []
+    }
+  ]
+}

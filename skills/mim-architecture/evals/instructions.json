@@ -1,0 +1,76 @@
+{
+  "instructions": [
+    {
+      "instruction": "Bundle the API, business logic, and persistence for a specific feature into one module instead of technical layers.",
+      "original_snippets": "Bundle the API, business logic, and persistence for a specific feature into one module. ... Instead of splitting a feature across technical layers (e.g., all controllers in one folder, all services in another), bundle the API, business logic, and persistence for a specific feature into one module.",
+      "relevant_when": "When designing the folder structure and organization of a new feature.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Minimize dependencies between modules so changes in one don't force changes in another.",
+      "original_snippets": "Minimize dependencies between modules. A change in one module (e.g., \"Menus\") should ideally not require changes in another (e.g., \"Orders\").",
+      "relevant_when": "When defining interactions and dependencies between different modules.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "Expose only a clear public API and hide internal implementation details (Encapsulation).",
+      "original_snippets": "Expose only a clear public API for interaction, allowing internal refactoring without affecting the rest of the system. ... Hide internal implementation details. Expose only a clear public API for interaction",
+      "relevant_when": "When designing the public interface of a module.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "A module must represent a business capability or process, not a technical layer.",
+      "original_snippets": "In MIM, a module is a representation of a business capability or process (e.g., \"User Onboarding\", \"Inventory Management\"). It is the \"gray area\" between classes/functions and system-wide design. ... It is NOT a technical layer like \"Services\" or \"Repositories\".",
+      "relevant_when": "When deciding what constitutes a module.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Modules must manage their own data; no direct database access between modules.",
+      "original_snippets": "It manages its own data; other modules cannot query its database directly but must go through its public API. ... Prevent modules from reaching into each other's databases or internal classes.",
+      "relevant_when": "When one module needs data managed by another module.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Split complex modules into a Business-Module (BM) and an Infrastructure-Module (IM).",
+      "original_snippets": "For complex logic, a module is split into two parts: Business-Module (BM) ... and Infrastructure-Module (IM).",
+      "relevant_when": "When structuring a module that involves both business logic and technical infrastructure.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "The Business-Module (BM) must have zero compile-time dependencies on the outside world (DB, network, frameworks).",
+      "original_snippets": "Business-Module (BM): A \"black box\" containing pure business logic. It has zero compile-time dependencies on the outside world (database, network, etc.).",
+      "relevant_when": "When writing code within the Business-Module.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "The Business-Module (BM) defines public interfaces (Ports) for external actions.",
+      "original_snippets": "The BM defines public interfaces (Ports) for any external action it needs (e.g., IRepository, IExternalService).",
+      "relevant_when": "When the Business-Module needs to interact with the outside world.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "The Infrastructure-Module (IM) implements the interfaces defined in the BM (Adapters).",
+      "original_snippets": "The IM implements these interfaces (Adapters). ... Implement the interfaces defined in the BM (e.g., SQL implementation for repository).",
+      "relevant_when": "When providing technical implementations for business requirements.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "The Infrastructure-Module (IM) is responsible for technical code and wiring the system via Dependency Injection.",
+      "original_snippets": "Infrastructure-Module (IM): A subordinate module containing technical code (HTTP handlers, database connectivity, message bus logic). It depends on the BM to implement its interfaces. ... The IM is responsible for \"wiring\" the system together using Dependency Injection.",
+      "relevant_when": "When setting up the technical infrastructure and DI container.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "Use Sociable Unit Tests to test the entire Business-Module as a single unit via its public API.",
+      "original_snippets": "Sociable Unit Tests: Test the entire Business-Module as a single unit via its public API. ... MIM favors Sociable Unit Tests over solitary tests with heavy mocking.",
+      "relevant_when": "When writing unit tests for a module.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Use hand-written Fakes instead of mocking frameworks for more reliable and maintainable tests.",
+      "original_snippets": "Fakes Over Mocks: Use hand-written \"Fakes\" (e.g., InMemoryRepository) instead of mocking frameworks. Fakes are more reliable, easier to maintain, and lead to less brittle tests.",
+      "relevant_when": "When providing dependencies for sociable unit tests.",
+      "why_given": "preference"
+    }
+  ]
+}

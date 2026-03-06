@@ -1,0 +1,26 @@
+{
+  "context": "Evaluates the implementation of the 'Infrastructure-Module' (IM) and its relationship with the 'Business-Module' (BM) according to the Dependency Inversion Principle and 'Wiring' instructions of MIM.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "IM depends on BM",
+      "description": "Dependency flows correctly: the Infrastructure-Module depends on the Business-Module, while the BM has zero dependencies on the IM.",
+      "max_score": 30
+    },
+    {
+      "name": "Interface implementation",
+      "description": "The Infrastructure-Module implements at least one interface defined in the Business-Module (Adapter).",
+      "max_score": 30
+    },
+    {
+      "name": "Dependency Injection wiring",
+      "description": "Shows the wiring or injection of the IM's implementation into the BM's service or classes.",
+      "max_score": 20
+    },
+    {
+      "name": "Infrastructure Isolation",
+      "description": "Business-Module remains free of any technical implementations such as database drivers or HTTP libraries.",
+      "max_score": 20
+    }
+  ]
+}

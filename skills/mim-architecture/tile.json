@@ -1,0 +1,11 @@
+{
+  "name": "jpc0/mim-architecture",
+  "version": "0.1.0",
+  "private": true,
+  "summary": "Design, develop, and test software systems using the MIM (Module - Infrastructure - Module) architecture and foundational modular design principles.",
+  "skills": {
+    "mim-architecture": {
+      "path": "SKILL.md"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "context": "Evaluates the implementation of the 'Adaptive Testing' strategy, specifically checking for sociable unit tests, the use of hand-written fakes, and behavioral assertions instead of mocking frameworks.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Sociable testing via Public API",
+      "description": "Tests the entire Business-Module (BM) through its main public interface or entry point rather than testing individual internal classes in isolation.",
+      "max_score": 30
+    },
+    {
+      "name": "Hand-written Fake usage",
+      "description": "Uses at least one hand-written 'Fake' class (e.g., InMemoryRepo) to satisfy external dependencies of the BM.",
+      "max_score": 30
+    },
+    {
+      "name": "Minimal Mocking Framework usage",
+      "description": "Does NOT rely on automated mocking frameworks (e.g., jest.mock, mockito) for internal module behavior or dependencies.",
+      "max_score": 20
+    },
+    {
+      "name": "State-based behavioral assertions",
+      "description": "Assertions check for the final state or return value through the public API rather than verifying calls to mocks (interaction testing).",
+      "max_score": 20
+    }
+  ]
+}

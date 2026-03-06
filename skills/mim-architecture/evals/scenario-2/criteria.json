@@ -1,0 +1,21 @@
+{
+  "context": "Evaluates whether the agent correctly manages interaction between two modules (Orders and Inventory) according to the 'Low Coupling' and 'Encapsulation' principles, specifically checking that communication happens only through public APIs.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Public API interaction",
+      "description": "The Orders module interacts with the Inventory module ONLY through its designated public interface or service class.",
+      "max_score": 40
+    },
+    {
+      "name": "No direct DB access",
+      "description": "The Orders module does NOT import or call the Inventory module's persistence or repository implementation classes directly.",
+      "max_score": 40
+    },
+    {
+      "name": "Module Encapsulation",
+      "description": "Internal models and implementation details of the Inventory module are NOT exposed to or used by the Orders module.",
+      "max_score": 20
+    }
+  ]
+}

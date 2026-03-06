@@ -1,0 +1,26 @@
+{
+  "context": "Tests whether the agent can correctly refactor a layer-based system into a cohesive, process-oriented vertical module as per the 'High Cohesion' and 'Module as Business Process' principles of MIM.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Eliminate technical folders",
+      "description": "The logic is NOT split across top-level global technical layer folders (e.g. 'controllers', 'services').",
+      "max_score": 30
+    },
+    {
+      "name": "Bundled Feature Logic",
+      "description": "The API, logic, and infrastructure for user enrollment are bundled into a single feature-specific module directory.",
+      "max_score": 30
+    },
+    {
+      "name": "Process-based Naming",
+      "description": "The module directory is named after a business capability (e.g., 'UserEnrollment') rather than technical layers.",
+      "max_score": 20
+    },
+    {
+      "name": "Internal Module Structure",
+      "description": "Inside the module, code is split to separate business logic (BM) from technical infrastructure (IM).",
+      "max_score": 20
+    }
+  ]
+}
