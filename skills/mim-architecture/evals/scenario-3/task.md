@@ -1,20 +1,40 @@
-# Testing the Firmware Dispatcher
+# Testing for Refactoring Safety
 
 ## Problem/Feature Description
 
-You are working on a `Firmware Dispatcher` module. This module is responsible for checking for available firmware updates and sending them to specific devices. It depends on a `FirmwareRepository` to fetch versions and an `IoTGateway` to communicate with the devices.
+We are building a `Firmware Dispatcher` feature. Its job is to find the latest firmware versions and send them to IoT devices. The feature is split into multiple internal classes: a `VersionScanner`, a `MessageBuilder`, and a `DispatchService`. It also needs to talk to a database to log attempts and an external gateway to send the actual messages.
 
-The module's Business-Module (BM) is structured as follows:
-- `FirmwareDispatcher`: The main service that handles the dispatching logic.
-- `IFirmwareRepository`: An interface for fetching firmware data.
-- `IIoTGateway`: An interface for sending messages to devices.
+In the past, our team wrote "solitary" unit tests that mocked every internal helper class. This led to "brittle" tests that would break every time we tried to refactor our internal classes, even if the feature's behavior stayed the same. It also gave us very low confidence that the components actually worked together correctly.
 
-Your task is to write a comprehensive unit test suite for this module. The team wants to move away from "Solitary Unit Tests" (which mock every internal class) because they've found them to be brittle and provide low confidence. Instead, they want to follow the "Adaptive Testing" strategy of the MIM architecture.
+Your task is to write a unit test for this `Firmware Dispatcher`. The goal is a test that provides high confidence and is safe to refactor. Specifically, the test should be able to pass even if the internal classes are split or merged, as long as the feature's core behavior (correctly logging and sending firmware) is maintained.
+
+## Input Files
+
+The following file is provided as a starting point:
+
+=============== FILE: src/FirmwareDispatcher/FirmwareDispatcher.ts ===============
+export class FirmwareDispatcher {
+  constructor(private repo: IFirmwareRepository, private gateway: IIoTGateway) {}
+
+  async dispatch(version: string, deviceId: string) {
+    const log = await this.repo.createLog(version, deviceId);
+    await this.gateway.send(version, deviceId);
+    return log.id;
+  }
+}
+
+export interface IFirmwareRepository {
+  createLog(version: string, deviceId: string): Promise<any>;
+}
+
+export interface IIoTGateway {
+  send(version: string, deviceId: string): Promise<void>;
+}
 
 ## Output Specification
 
-- Provide the implementation for a unit test suite for the `Firmware Dispatcher` module.
-- Demonstrate "Sociable Unit Testing" by testing the module via its public API.
-- Show how you use hand-written "Fakes" instead of mocking frameworks to satisfy the `IFirmwareRepository` and `IIoTGateway` interfaces.
-- Ensure that the tests focus on the behavior of the entire Business-Module rather than internal implementation details.
-- Provide example code for the `FirmwareDispatcher` and its interfaces to make the test runable.
+- Provide the implementation for a unit test suite for this feature.
+- Show how the test provides high confidence by exercising the feature's logic as a whole.
+- Use a technique that provides a stable implementation for external dependencies (like the database and gateway) without relying on automated mocking frameworks like Jest/Mockito.
+- Demonstrate a test that is focused on behavior and state rather than implementation details.
+- Provide any necessary code for the dependencies and the test runner.

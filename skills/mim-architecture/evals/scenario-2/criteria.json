@@ -3,19 +3,19 @@
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "Public API interaction",
-      "description": "The Orders module interacts with the Inventory module ONLY through its designated public interface or service class.",
+      "name": "Service-to-Service interaction",
+      "description": "The 'Orders' module interacts with the 'Inventory' module only through its designated public service or API class.",
       "max_score": 40
     },
     {
-      "name": "No direct DB access",
-      "description": "The Orders module does NOT import or call the Inventory module's persistence or repository implementation classes directly.",
-      "max_score": 40
+      "name": "No Repo Imports",
+      "description": "The 'Orders' module does NOT import or call 'InventoryRepo', 'SqlInventoryRepository', or other implementation-level classes from the Inventory module.",
+      "max_score": 30
     },
     {
-      "name": "Module Encapsulation",
-      "description": "Internal models and implementation details of the Inventory module are NOT exposed to or used by the Orders module.",
-      "max_score": 20
+      "name": "No Model Imports",
+      "description": "The 'Orders' module does NOT import internal data models (e.g. 'InventoryItemModel') from the Inventory module, using primitives or its own DTOs instead.",
+      "max_score": 30
     }
   ]
 }

@@ -1,20 +1,20 @@
-# Battery Health Monitoring System
+# Battery Health Monitoring Scaffolding
 
 ## Problem/Feature Description
 
 An IoT company managing a large fleet of industrial batteries needs a new capability to monitor battery health. The system must process incoming telemetry readings (voltage, temperature, and current), save them to a database, and raise an alarm if the voltage drops below a certain threshold.
 
-The company is moving towards a modular architecture and wants this new feature to be self-contained, maintainable, and easy to test. They've found that traditional layer-based approaches (splitting code into `services`, `repositories`, and `controllers` global folders) lead to a "Big Ball of Mud" and they want to avoid this.
+The company has struggled with "Big Ball of Mud" architectures in the past, where features were scattered across global technical layers like `controllers`, `services`, and `repositories`. This made it difficult to understand what the system actually *does* just by looking at the folders.
 
-Your task is to design and implement the folder structure and initial boilerplate for this "Battery Monitoring" capability. The solution should be highly cohesive and ensure that the core business logic is not coupled to specific database technologies or external alerting services.
+Your task is to set up the initial directory structure and boilerplate for this new "Battery Monitoring" capability. The goal is a "Screaming Architecture" where the code is organized around the business process, making it easy to replace or extract the entire feature if needed.
 
 ## Output Specification
 
-Provide a directory structure and the initial code (in TypeScript or the language of your choice) for this module. This should include:
-- The overall module folder structure.
-- The core business service that handles readings and applies rules.
-- Any necessary interfaces for persistence and alerting.
-- A placeholder for a concrete implementation of these interfaces.
-- A clear entry point or public API for the module.
+Provide a directory structure and the initial code (in TypeScript or the language of your choice) for this capability. This should include:
+- The overall folder structure for the feature.
+- The core service that applies the business rules for battery health.
+- Necessary abstractions for saving readings and raising alarms.
+- A technical implementation for those abstractions.
+- A clear public API or entry point for the capability.
 
-Do not provide a full implementation of the database or alerting services, just the architectural structure and necessary boilerplate to demonstrate how these parts interact.
+Focus on creating a structure that is cohesive and keeps all parts of the feature together while maintaining a clear separation between logic and technical details.

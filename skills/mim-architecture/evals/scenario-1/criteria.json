@@ -1,25 +1,25 @@
 {
-  "context": "Tests whether the agent can correctly refactor a layer-based system into a cohesive, process-oriented vertical module as per the 'High Cohesion' and 'Module as Business Process' principles of MIM.",
+  "context": "Tests whether the agent can correctly refactor a layer-based system into a cohesive, process-oriented vertical module using MIM principles, specifically checking for vertical slicing and BM/IM isolation.",
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "Eliminate technical folders",
-      "description": "The logic is NOT split across top-level global technical layer folders (e.g. 'controllers', 'services').",
+      "name": "Cohesive Feature Folder",
+      "description": "All files related to registration are moved into a single top-level directory (e.g., 'UserEnrollment') rather than split across global layer folders.",
       "max_score": 30
     },
     {
-      "name": "Bundled Feature Logic",
-      "description": "The API, logic, and infrastructure for user enrollment are bundled into a single feature-specific module directory.",
+      "name": "MIM Folder Structure",
+      "description": "The refactored module uses 'BM' (Business-Module) and 'IM' (Infrastructure-Module) to organize its internal components.",
       "max_score": 30
     },
     {
-      "name": "Process-based Naming",
-      "description": "The module directory is named after a business capability (e.g., 'UserEnrollment') rather than technical layers.",
+      "name": "Process-based Name",
+      "description": "The folder is named after the business process (e.g., 'UserEnrollment') instead of a technical layer (e.g., 'Users').",
       "max_score": 20
     },
     {
-      "name": "Internal Module Structure",
-      "description": "Inside the module, code is split to separate business logic (BM) from technical infrastructure (IM).",
+      "name": "Zero IM imports in BM",
+      "description": "The 'BM' section contains NO compile-time imports of code from the 'IM' section or global infrastructure.",
       "max_score": 20
     }
   ]

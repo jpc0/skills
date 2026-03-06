@@ -1,8 +1,10 @@
-# Refactor to Cohesive Modules
+# Refactor User Registration for Maintainability
 
 ## Problem/Feature Description
 
-An existing application for user registration has become difficult to maintain because the logic is split across multiple top-level folders based on technical roles. The current structure is as follows:
+The user registration logic in our application has become difficult to maintain because its components are scattered across top-level global technical layer folders. Adding a small field or changing a rule requires jumping between `src/controllers`, `src/services`, and `src/repositories`, leading to high cognitive load and fragmentation.
+
+The current structure looks like this:
 
 ```
 src/
@@ -14,9 +16,9 @@ src/
     └── UserRepository.ts
 ```
 
-This "horizontal layering" makes it hard to see the complete flow of a single business process like "User Enrollment." It also leads to tight coupling between different features as they share the same global layer folders.
+This "horizontal layering" makes it hard to see the complete flow of "User Enrollment" at a glance. It also causes tight coupling, as these global layer folders are shared by multiple unrelated features.
 
-Your task is to refactor this "User Registration" logic into a single cohesive "User Enrollment" module using the MIM architecture. All components related to enrolling a user (API, business logic, persistence) should be bundled together in a way that reflects the business capability.
+Your task is to refactor this "User Registration" logic into a single cohesive module (e.g., `UserEnrollment`). The goal is to move towards a structure where each business capability is self-contained, keeping everything relevant to a feature together while ensuring the core business rules are isolated from technical implementation details like database access.
 
 ## Input Files
 
@@ -56,7 +58,7 @@ export class UserRepository {
 
 ## Output Specification
 
-- Refactor the code into a new, single-feature module (e.g., `UserEnrollment`).
-- Use the MIM (Module - Infrastructure - Module) split within this module.
-- Ensure the business logic has zero compile-time dependencies on the repository implementation.
-- Show the final directory structure and the refactored code for each file.
+- Refactor the code into a new, single-feature module.
+- Organize the code within the module to separate business logic from technical infrastructure.
+- Ensure the business logic has zero compile-time dependencies on concrete persistence implementations.
+- Show the final directory structure and the refactored code for each part of the module.

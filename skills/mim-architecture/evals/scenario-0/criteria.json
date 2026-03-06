@@ -3,28 +3,28 @@
   "type": "weighted_checklist",
   "checklist": [
     {
-      "name": "Vertical Feature Folder",
-      "description": "All files for the BatteryMonitoring feature are contained within a single top-level directory (not split across global technical layers).",
+      "name": "Feature-centric Folder",
+      "description": "All files for the BatteryMonitoring feature are contained within a single top-level feature-specific directory (not split across global layers).",
       "max_score": 20
     },
     {
-      "name": "Distinct BM and IM separation",
-      "description": "The module contains separate sections or folders for Business Logic (BM) and Infrastructure (IM).",
+      "name": "MIM naming convention",
+      "description": "The module contains sub-folders or namespaces explicitly named 'BM' (Business-Module) and 'IM' (Infrastructure-Module).",
       "max_score": 20
     },
     {
-      "name": "Zero External Dependencies in BM",
-      "description": "Business-Module files do NOT import database, network, or framework-specific packages.",
+      "name": "Strict BM isolation",
+      "description": "The 'BM' section contains ZERO imports of technical infrastructure such as database drivers (SQL, Prisma, etc.) or network frameworks.",
       "max_score": 20
     },
     {
-      "name": "BM Interface Definition",
-      "description": "The Business-Module defines at least one public interface (Port) for required external actions.",
+      "name": "BM-defined Interfaces",
+      "description": "The Business-Module defines at least one public interface (Port) for required external actions like persistence or alerting.",
       "max_score": 20
     },
     {
-      "name": "IM Implementation of BM Interface",
-      "description": "The Infrastructure-Module contains a concrete implementation (Adapter) of the interface defined in the BM.",
+      "name": "IM-implemented Adapters",
+      "description": "The Infrastructure-Module contains concrete implementations of the interfaces defined in the BM.",
       "max_score": 20
     }
   ]

@@ -4,22 +4,22 @@
   "checklist": [
     {
       "name": "Sociable testing via Public API",
-      "description": "Tests the entire Business-Module (BM) through its main public interface or entry point rather than testing individual internal classes in isolation.",
+      "description": "Tests the entire feature through its main public entry point (e.g., FirmwareDispatcher.dispatch()) rather than testing internal classes (like scanners, builders) individually.",
       "max_score": 30
     },
     {
       "name": "Hand-written Fake usage",
-      "description": "Uses at least one hand-written 'Fake' class (e.g., InMemoryRepo) to satisfy external dependencies of the BM.",
+      "description": "Uses at least one explicit hand-written 'Fake' class (e.g., FakeFirmwareRepository, InMemoryRepo) that maintains an internal list or state for verification.",
       "max_score": 30
     },
     {
-      "name": "Minimal Mocking Framework usage",
-      "description": "Does NOT rely on automated mocking frameworks (e.g., jest.mock, mockito) for internal module behavior or dependencies.",
+      "name": "No automated mocking",
+      "description": "The test does NOT use 'jest.mock', 'sinon.stub', 'Mockito.mock', or any similar library to create or control mock objects.",
       "max_score": 20
     },
     {
       "name": "State-based behavioral assertions",
-      "description": "Assertions check for the final state or return value through the public API rather than verifying calls to mocks (interaction testing).",
+      "description": "Assertions check the final state of the 'Fake' (e.g. check number of logs saved) or the result of the API call, rather than verifying calls to mocks.",
       "max_score": 20
     }
   ]

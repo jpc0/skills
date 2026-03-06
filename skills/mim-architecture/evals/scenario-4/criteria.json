@@ -3,23 +3,23 @@
   "type": "weighted_checklist",
   "checklist": [
     {
+      "name": "IM/BM Folder Separation",
+      "description": "The Infrastructure and Business code is explicitly split into folders or namespaces named 'IM' and 'BM'.",
+      "max_score": 30
+    },
+    {
       "name": "IM depends on BM",
-      "description": "Dependency flows correctly: the Infrastructure-Module depends on the Business-Module, while the BM has zero dependencies on the IM.",
+      "description": "The Infrastructure code (IM) depends on the Business code (BM). Specifically, the IM's repository implementation imports the BM's interface.",
       "max_score": 30
     },
     {
-      "name": "Interface implementation",
-      "description": "The Infrastructure-Module implements at least one interface defined in the Business-Module (Adapter).",
-      "max_score": 30
-    },
-    {
-      "name": "Dependency Injection wiring",
-      "description": "Shows the wiring or injection of the IM's implementation into the BM's service or classes.",
+      "name": "DI Wiring outside BM",
+      "description": "Dependency Injection wiring (e.g., factory, DI container, manual wiring) happens in the IM or a module-level entry point, not inside the BM's service.",
       "max_score": 20
     },
     {
-      "name": "Infrastructure Isolation",
-      "description": "Business-Module remains free of any technical implementations such as database drivers or HTTP libraries.",
+      "name": "Strict BM Technical Isolation",
+      "description": "The 'BM' section contains NO technical dependencies like database libraries or framework-specific controllers.",
       "max_score": 20
     }
   ]
