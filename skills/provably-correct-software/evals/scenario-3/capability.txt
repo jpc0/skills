@@ -1,0 +1,1 @@
+Invariant restoration in exception handling

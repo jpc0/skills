@@ -1,0 +1,36 @@
+{
+  "context": "Tests whether the agent can formally annotate an existing algorithm with Hoare Triples and verify its total correctness including termination.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Hoare Triples {P}C{Q}",
+      "description": "Explicitly uses Hoare triple notation in documentation or comments.",
+      "max_score": 15
+    },
+    {
+      "name": "Precondition P defined",
+      "description": "Correctly identifies the starting state required for GCD (e.g., a, b > 0).",
+      "max_score": 15
+    },
+    {
+      "name": "Postcondition Q defined",
+      "description": "Correctly defines the final state (result = GCD(a, b)).",
+      "max_score": 15
+    },
+    {
+      "name": "Loop Invariant I",
+      "description": "Identifies the loop invariant (e.g., GCD(a, b) = GCD(x, y)).",
+      "max_score": 20
+    },
+    {
+      "name": "Loop Variant v",
+      "description": "Identifies the variant (e.g., x + y) and proves it decreases.",
+      "max_score": 20
+    },
+    {
+      "name": "Total Correctness proof",
+      "description": "Explicitly addresses both partial correctness and termination.",
+      "max_score": 15
+    }
+  ]
+}

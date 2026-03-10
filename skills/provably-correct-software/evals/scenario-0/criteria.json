@@ -1,0 +1,31 @@
+{
+  "context": "Tests whether the agent uses wp calculus and backward construction to implement a sequence of assignments that satisfy a specific postcondition.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Backward construction logic",
+      "description": "Evidence (e.g., in comments) of calculating wp(C, Q) backwards from the postcondition.",
+      "max_score": 30
+    },
+    {
+      "name": "Assignment rule usage",
+      "description": "Correct substitution of expressions into the postcondition logic during derivation.",
+      "max_score": 20
+    },
+    {
+      "name": "Correct precondition",
+      "description": "The final derived precondition P is documented or asserted at the start.",
+      "max_score": 20
+    },
+    {
+      "name": "Sequential composition",
+      "description": "Correct chaining of wp(S1, wp(S2, Q)) for multiple statements.",
+      "max_score": 20
+    },
+    {
+      "name": "Assertion presence",
+      "description": "Includes native assertions (e.g. assert) for the final result.",
+      "max_score": 10
+    }
+  ]
+}

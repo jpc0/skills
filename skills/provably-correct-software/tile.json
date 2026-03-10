@@ -1,0 +1,11 @@
+{
+  "name": "jpc0/provably-correct-software",
+  "version": "0.1.0",
+  "summary": "Build provably correct software using formal methods like Hoare Logic, Weakest Preconditions, and Design-by-Contract.",
+  "private": false,
+  "skills": {
+    "provably-correct-software": {
+      "path": "SKILL.md"
+    }
+  }
+}

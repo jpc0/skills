@@ -1,0 +1,31 @@
+{
+  "context": "Tests whether the agent uses Design-by-Contract (DbC) principles, including class invariants and the rejection of defensive programming.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Precondition defined",
+      "description": "Explicitly defines preconditions for public methods (e.g. put, get).",
+      "max_score": 20
+    },
+    {
+      "name": "Postcondition defined",
+      "description": "Explicitly defines postconditions for public methods.",
+      "max_score": 20
+    },
+    {
+      "name": "Class Invariant",
+      "description": "Defines a class invariant that must be true for all instances of the buffer.",
+      "max_score": 20
+    },
+    {
+      "name": "No Defensive Programming",
+      "description": "Does NOT include redundant 'if' checks for things covered by the precondition in method bodies.",
+      "max_score": 20
+    },
+    {
+      "name": "Native Assertions",
+      "description": "Uses native assertions (e.g., assert) to enforce the contract.",
+      "max_score": 20
+    }
+  ]
+}

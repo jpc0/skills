@@ -1,0 +1,46 @@
+{
+  "context": "Tests whether the agent can correctly identify and use loop invariants and variants to verify the correctness and termination of a non-trivial loop, including runtime assertions.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Loop Invariant defined",
+      "description": "Explicitly defines a Loop Invariant (I) in the code or documentation.",
+      "max_score": 15
+    },
+    {
+      "name": "Loop Variant defined",
+      "description": "Explicitly defines a Loop Variant (v) in the code or documentation.",
+      "max_score": 15
+    },
+    {
+      "name": "Initialization proof",
+      "description": "Evidence (e.g. in comments) of showing Precondition => Invariant (Initialization).",
+      "max_score": 10
+    },
+    {
+      "name": "Preservation proof",
+      "description": "Evidence (e.g. in comments) of showing {I AND B} Body {I} (Preservation).",
+      "max_score": 10
+    },
+    {
+      "name": "Termination proof",
+      "description": "Evidence (e.g. in comments) of showing v strictly decreases and v >= 0 (Termination).",
+      "max_score": 10
+    },
+    {
+      "name": "Postcondition proof",
+      "description": "Evidence (e.g. in comments) of showing (I AND NOT B) => Q (Postcondition).",
+      "max_score": 10
+    },
+    {
+      "name": "Native assertions",
+      "description": "Uses native assert statements for preconditions/postconditions.",
+      "max_score": 10
+    },
+    {
+      "name": "Runtime Invariant Check",
+      "description": "Includes runtime assert statements WITHIN the loop to check the invariant and/or variant.",
+      "max_score": 20
+    }
+  ]
+}

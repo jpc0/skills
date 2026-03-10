@@ -1,0 +1,94 @@
+{
+  "instructions": [
+    {
+      "instruction": "Define Preconditions, Postconditions, and Class Invariants.",
+      "original_snippets": "Define Preconditions, Postconditions, and Class Invariants.",
+      "relevant_when": "When designing a new function or data structure.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "Reject defensive programming: If a precondition is specified, the supplier must assume it is true. Do not add redundant checks.",
+      "original_snippets": "Reject defensive programming. If a precondition is specified, the supplier must assume it is true. Do not add redundant checks.",
+      "relevant_when": "When implementing a function that has a specified contract.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Restore class invariants before resumption or triggering an 'organized panic' in exception handling.",
+      "original_snippets": "Restore class invariants before resumption or triggering an 'organized panic'.",
+      "relevant_when": "When handling exceptions or errors that could leave objects in an inconsistent state.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Apply Hoare Triples {P} C {Q} to specify code blocks.",
+      "original_snippets": "Apply {P} C {Q} to specify code blocks.",
+      "relevant_when": "When documenting or specifying the behavior of a segment of code.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "Use wp(C, Q) to derive the weakest precondition from your postcondition (backward construction).",
+      "original_snippets": "Use wp(C, Q) to derive the weakest precondition from your postcondition.",
+      "relevant_when": "When constructing code to satisfy a specific goal (postcondition).",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Use the Assignment Rule: wp('x := E', R) = R[x -> E].",
+      "original_snippets": "Assignment Rule: wp(\"x := E\", R) = R[x -> E].",
+      "relevant_when": "When calculating the precondition for a variable assignment.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Use Sequential Composition: wp('S1; S2', R) = wp(S1, wp(S2, R)).",
+      "original_snippets": "Sequential Composition: wp(\"S1; S2\", R) = wp(S1, wp(S2, R)).",
+      "relevant_when": "When calculating the precondition for a sequence of statements.",
+      "why_given": "new knowledge"
+    },
+    {
+      "instruction": "Define a Loop Invariant (I) that must hold before, during, and after the loop.",
+      "original_snippets": "Invariant (I): Must hold before, during, and after the loop. (I AND NOT B) => Q.",
+      "relevant_when": "When implementing a loop.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "Define a Loop Variant (v) as a strictly decreasing non-negative integer function ensuring termination.",
+      "original_snippets": "Variant (v): Strictly decreasing non-negative integer function ensuring termination.",
+      "relevant_when": "When implementing a loop to ensure it finishes.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "Prove loop Initialization (P => I).",
+      "original_snippets": "Prove Initialization (P => I)",
+      "relevant_when": "When verifying a loop is correctly set up.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "Prove loop Preservation ({I AND B} Body {I}).",
+      "original_snippets": "Prove Preservation ({I AND B} Body {I})",
+      "relevant_when": "When verifying a loop's body maintains the invariant.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "Prove loop Termination (v decreases, I => v >= 0).",
+      "original_snippets": "Prove Termination (v decreases, I => v >= 0)",
+      "relevant_when": "When verifying a loop will always terminate.",
+      "why_given": "reminder"
+    },
+    {
+      "instruction": "Annotate using language-native assertions to document the contract.",
+      "original_snippets": "Annotate: Use language-native assertions (e.g., assert in Python, @requires/@ensures in Eiffel/JML) to document the contract.",
+      "relevant_when": "When finalizing the implementation of a function or class.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "Embed assert statements within the loop body to verify the Invariant and Variant at each iteration.",
+      "original_snippets": "Embed assert statements within the loop body to verify the Invariant and Variant at each iteration.",
+      "relevant_when": "When implementing a loop for runtime verification.",
+      "why_given": "preference"
+    },
+    {
+      "instruction": "When restoring state in an exception handler, use established property setters or call the class invariant check immediately after restoration.",
+      "original_snippets": "When restoring state in an exception handler, use established property setters or call the class invariant check immediately after restoration to ensure a validated state.",
+      "relevant_when": "When performing a rollback in exception handling.",
+      "why_given": "preference"
+    }
+  ]
+}

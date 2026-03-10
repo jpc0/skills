@@ -1,0 +1,36 @@
+{
+  "context": "Tests whether the agent handles exceptions according to DbC rules, specifically by restoring the class invariant before failing or resuming, and ensuring validation.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Exception identification",
+      "description": "Uses a try/except block to catch potential failures in the sub-tasks.",
+      "max_score": 20
+    },
+    {
+      "name": "Invariant restoration",
+      "description": "Explicitly restores the class invariant (e.g. balance consistency) in the except block.",
+      "max_score": 20
+    },
+    {
+      "name": "Validation after restoration",
+      "description": "Calls a class invariant check or a validated property immediately after state restoration in the handler.",
+      "max_score": 20
+    },
+    {
+      "name": "Organized Panic",
+      "description": "Follows the Organized Panic strategy by reporting failure after restoring the invariant.",
+      "max_score": 15
+    },
+    {
+      "name": "Class Invariant check",
+      "description": "Demonstrates knowledge of the class invariant being maintained even in error states.",
+      "max_score": 15
+    },
+    {
+      "name": "Native Assertions",
+      "description": "Uses native assertions (e.g., assert) to enforce the invariant.",
+      "max_score": 10
+    }
+  ]
+}
